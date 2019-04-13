@@ -207,6 +207,15 @@ if __name__ == "__main__":
 			file.close()
 			logger.info("All domains saved to ./data/domains.csv")
 			logger.info("="*40)
+		elif (arg == '--clean-database'):
+			logger.info("="*40)
+			logger.info("Cleaning Database...")
+			cleaned = db.cleanDatabase()
+			if (cleaned == True):
+				logger.info("Database has been cleaned up")
+			else:
+				logger.info("Oops, there was a probleam cleaning the database")
+			logger.info("="*40)
 		else:
 			# Crawl the supplied keywords!
 			crawl(arg)

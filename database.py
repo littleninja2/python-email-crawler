@@ -115,7 +115,16 @@ class CrawlerDb:
 
 		return domain_set
 
+		
+	def cleanDatabase(self):
+		if not self.connected:
+			return False
+		delres = self.connection.execute(self.website_table.delete().where(1 == 1))
+		if not delres:
+			return False
+		return True
 
+		
 	def close(self):
 		self.connection.close()
 		
